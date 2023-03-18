@@ -1,16 +1,16 @@
 package md.finance.financemd.security;
 
-import md.finance.financemd.model.Person;
+import md.finance.financemd.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
 public class PersonDetails implements UserDetails {
-    private final Person person;
+    private final User user;
 
-    public PersonDetails(Person person) {
-        this.person = person;
+    public PersonDetails(User user) {
+        this.user = user;
     }
 
     @Override
@@ -20,12 +20,12 @@ public class PersonDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return person.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return person.getName();
+        return user.getName();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class PersonDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-    public Person getPerson(){
-        return this.person;
+    public User getPerson(){
+        return this.user;
     }
 }

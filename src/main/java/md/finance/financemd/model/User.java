@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "person")
-public class Person {
+public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,10 +27,10 @@ public class Person {
     @Column(name = "password")
     private String password;
 
-    public Person() {
+    public User() {
     }
 
-    public Person(@NotEmpty @Size(min = 2, max = 100, message = "name is short or long") String name, @Min(value = 1900, message = "year should be < 1990") int year) {
+    public User(@NotEmpty @Size(min = 2, max = 100, message = "name is short or long") String name, @Min(value = 1900, message = "year should be < 1990") int year) {
         this.name = name;
         this.year = year;
     }

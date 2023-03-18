@@ -1,7 +1,7 @@
 package md.finance.financemd.service;
 
-import md.finance.financemd.model.Person;
-import md.finance.financemd.repositories.PeopleRepository;
+import md.finance.financemd.model.User;
+import md.finance.financemd.repositories.UserRepository;
 import md.finance.financemd.security.PersonDetails;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,15 +12,15 @@ import java.util.Optional;
 
 @Service
 public class PersonDetailsService implements UserDetailsService {
-    private final PeopleRepository peopleRepository;
+    private final UserRepository userRepository;
 
-    public PersonDetailsService(PeopleRepository peopleRepository) {
-        this.peopleRepository = peopleRepository;
+    public PersonDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Optional<Person> person = peopleRepository.findByName(s);
+        Optional<User> person = userRepository.findByName(s);
 
 if (!person.isPresent())
     throw new UsernameNotFoundException("User not found!");
