@@ -10,6 +10,8 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "person")
@@ -36,6 +38,10 @@ public class User {
     private String password;
     @Column(name = "role")
     private String role;
+
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> orders;
 
 
     public User() {
@@ -92,6 +98,14 @@ public class User {
 
     public void setDiscount(int discount) {
         this.discount = discount;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     @Override
