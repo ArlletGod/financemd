@@ -6,6 +6,7 @@ import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -24,10 +25,18 @@ public class User {
     @Min(value = 1900, message = "year should be < 1990")
     @Column(name = "year_of_birth")
     private int year;
+
+    @Min(0)
+    @Max(100)
+    @Column(name = "discount")
+    private int discount;
+
+
     @Column(name = "password")
     private String password;
     @Column(name = "role")
     private String role;
+
 
     public User() {
     }
@@ -75,6 +84,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
     }
 
     @Override
