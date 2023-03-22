@@ -1,6 +1,7 @@
 package md.finance.financemd.repositories;
 
 import md.finance.financemd.model.Order;
+import md.finance.financemd.model.enums.TypeStatus;
 import net.bytebuddy.TypeCache;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,11 +14,8 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<Order,Integer> {
 
-
-    @Query(value = "select * from orders o JOIN person p on o.person_id = p.id join item i on o.item_id = i.id where typestatus =2  and p.username like %:keyword%", nativeQuery = true)
-    List<Order> findAllbyStatusActice(@Param("keyword") String keyword );
-
-
-
+    List<Order> findOrdersByUserNameAndTypeStatus(String name,TypeStatus typeStatus);
+    List<Order> findAllOrdersByTypeStatus(TypeStatus typeStatus);
+    List<Order> findOrderByItem_Title(String name);
 
 }

@@ -45,4 +45,8 @@ public class ItemService {
         itemRepository.deleteById(id);
     }
 
+    public List<Item> findAll(){
+        return itemRepository.findAll();
+    }
+
 }

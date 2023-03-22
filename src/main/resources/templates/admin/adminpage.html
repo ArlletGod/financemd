@@ -5,7 +5,15 @@
     <title>Hello</title>
 </head>
 <body>
-admin page
+<a href="/orders/active">active</a><br>
+<a href="/orders/debt">debt</a><br>
+<a href="/orders/canceled">canceled</a><br>
+<a href="/items">items</a><br>
+    <a href="/items/newitem">new item</a>
+
+
+
+
 <form th:action="@{/logout}" th:method="POST">
     <input type="submit" value="Logout">
 </form>
